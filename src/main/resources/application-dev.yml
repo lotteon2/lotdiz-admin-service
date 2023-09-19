@@ -9,12 +9,6 @@ spring:
     port: 5672
     username: guest
     password: guest
-  # DB settings
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/admin-service?useSSL=false&characterEncoding=UTF-8&serverTimeZone=Asia/Seoul
-    username: root
-    password: 11111111
 eureka:
   client:
     register-with-eureka: true
