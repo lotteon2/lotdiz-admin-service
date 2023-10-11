@@ -1,7 +1,6 @@
 package com.lotdiz.adminservice.controller.restcontroller;
 
-import com.lotdiz.adminservice.dto.response.GetMakerResponseDto;
-import com.lotdiz.adminservice.dto.response.GetMakerSearchResponseDto;
+import com.lotdiz.adminservice.dto.request.AuthorizedProjectRequestDto;
 import com.lotdiz.adminservice.dto.response.GetProjectResponseDto;
 import com.lotdiz.adminservice.service.ProjectInfoService;
 import com.lotdiz.adminservice.utils.SuccessResponse;
@@ -41,26 +40,30 @@ public class ProjectRestController {
                 .build());
   }
 
-//  @PostMapping("/projects/{projectId}/auth")
-//  public ResponseEntity<SuccessResponse<Object>> authorizeProject(
-//      @PathVariable("projectId") Long projectId) {
-//    return ResponseEntity.ok().body(null);
-//  }
-//
-//  @GetMapping("/makers")
-//  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerResponseDto>>>> getMakers(
-//      @RequestParam("page") int page,
-//      @RequestParam("size") int size,
-//      @RequestParam("sort") String sort) {
-//    return ResponseEntity.ok().body(null);
-//  }
-//
-//  @GetMapping("/makers/search")
-//  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerSearchResponseDto>>>> getMakers(
-//      @RequestParam("query") String query,
-//      @RequestParam("page") int page,
-//      @RequestParam("size") int size,
-//      @RequestParam("sort") String sort) {
-//    return ResponseEntity.ok().body(null);
-//  }
+  @PostMapping("/projects/{projectId}/auth")
+  public ResponseEntity<SuccessResponse<Object>> authorizeProject(
+      @PathVariable("projectId") Long projectId) {
+    projectInfoService.authorizeProject(
+        AuthorizedProjectRequestDto.builder().projectId(projectId).build());
+
+    return ResponseEntity.ok().body(null);
+  }
+  //
+  //  @GetMapping("/makers")
+  //  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerResponseDto>>>> getMakers(
+  //      @RequestParam("page") int page,
+  //      @RequestParam("size") int size,
+  //      @RequestParam("sort") String sort) {
+  //    return ResponseEntity.ok().body(null);
+  //  }
+  //
+  //  @GetMapping("/makers/search")
+  //  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerSearchResponseDto>>>>
+  // getMakers(
+  //      @RequestParam("query") String query,
+  //      @RequestParam("page") int page,
+  //      @RequestParam("size") int size,
+  //      @RequestParam("sort") String sort) {
+  //    return ResponseEntity.ok().body(null);
+  //  }
 }

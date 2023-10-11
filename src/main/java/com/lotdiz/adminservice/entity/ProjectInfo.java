@@ -32,4 +32,8 @@ public class ProjectInfo {
 
   @Column(name = "created_at", nullable = false)
   private LocalDateTime createdAt;
+
+  public void authorize() {
+    this.projectIsAuthorized = true;
+  }
 }
