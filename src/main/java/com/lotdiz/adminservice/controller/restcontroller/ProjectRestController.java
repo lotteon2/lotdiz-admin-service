@@ -48,22 +48,4 @@ public class ProjectRestController {
 
     return ResponseEntity.ok().body(null);
   }
-  //
-  //  @GetMapping("/makers")
-  //  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerResponseDto>>>> getMakers(
-  //      @RequestParam("page") int page,
-  //      @RequestParam("size") int size,
-  //      @RequestParam("sort") String sort) {
-  //    return ResponseEntity.ok().body(null);
-  //  }
-  //
-  //  @GetMapping("/makers/search")
-  //  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerSearchResponseDto>>>>
-  // getMakers(
-  //      @RequestParam("query") String query,
-  //      @RequestParam("page") int page,
-  //      @RequestParam("size") int size,
-  //      @RequestParam("sort") String sort) {
-  //    return ResponseEntity.ok().body(null);
-  //  }
 }
