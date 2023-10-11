@@ -34,7 +34,6 @@ public class ProjectInfoService {
             .orElseThrow(ProjectInfoEntityNotFoundException::new);
     projectInfo.authorize();
 
-    //
     projectProducer.sendAuthorizedProject(authorizedProjectRequestDto);
   }
 }
