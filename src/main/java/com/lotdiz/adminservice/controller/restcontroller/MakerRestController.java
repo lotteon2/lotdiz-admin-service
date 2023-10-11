@@ -45,7 +45,7 @@ public class MakerRestController {
   }
 
   @GetMapping("/makers/search")
-  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerSearchResponseDto>>>> getMakers(
+  public ResponseEntity<SuccessResponse<Map<String, List<GetMakerSearchResponseDto>>>> getMakerSearchResult(
       @RequestParam("query") String query,
       @PageableDefault(
               page = 0,

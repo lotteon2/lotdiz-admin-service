@@ -21,7 +21,7 @@ public class MemberRestController {
   private final MemberInfoService memberInfoService;
 
   @GetMapping("/members")
-  public ResponseEntity<SuccessResponse<Map<String, List<GetMemberResponseDto>>>> getMakers(
+  public ResponseEntity<SuccessResponse<Map<String, List<GetMemberResponseDto>>>> getMembers(
       @PageableDefault(
               page = 0,
               size = 20,
@@ -40,7 +40,7 @@ public class MemberRestController {
   }
 
   @GetMapping("/members/search")
-  public ResponseEntity<SuccessResponse<Map<String, List<GetMemberSearchResponseDto>>>> getMakers(
+  public ResponseEntity<SuccessResponse<Map<String, List<GetMemberSearchResponseDto>>>> getMemberSearchResult(
       @RequestParam("query") String query,
       @PageableDefault(
               page = 0,
