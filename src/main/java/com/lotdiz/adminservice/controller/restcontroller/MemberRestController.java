@@ -48,6 +48,15 @@ public class MemberRestController {
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {
-    return ResponseEntity.ok().body(null);
+    List<GetMemberSearchResponseDto> getMemberSearchResponseDtos =
+        memberInfoService.getMemberSearchResult(query, pageable);
+    return ResponseEntity.ok()
+        .body(
+            SuccessResponse.<Map<String, List<GetMemberSearchResponseDto>>>builder()
+                .code(String.valueOf(HttpStatus.OK.value()))
+                .message(HttpStatus.OK.name())
+                .detail("회원 검색 성공")
+                .data(Map.of("members", getMemberSearchResponseDtos))
+                .build());
   }
 }
