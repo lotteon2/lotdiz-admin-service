@@ -40,14 +40,15 @@ public class MemberRestController {
   }
 
   @GetMapping("/members/search")
-  public ResponseEntity<SuccessResponse<Map<String, List<GetMemberSearchResponseDto>>>> getMemberSearchResult(
-      @RequestParam("query") String query,
-      @PageableDefault(
-              page = 0,
-              size = 20,
-              sort = {"createdAt"},
-              direction = Sort.Direction.DESC)
-          Pageable pageable) {
+  public ResponseEntity<SuccessResponse<Map<String, List<GetMemberSearchResponseDto>>>>
+      getMemberSearchResult(
+          @RequestParam("query") String query,
+          @PageableDefault(
+                  page = 0,
+                  size = 20,
+                  sort = {"createdAt"},
+                  direction = Sort.Direction.DESC)
+              Pageable pageable) {
     List<GetMemberSearchResponseDto> getMemberSearchResponseDtos =
         memberInfoService.getMemberSearchResult(query, pageable);
     return ResponseEntity.ok()

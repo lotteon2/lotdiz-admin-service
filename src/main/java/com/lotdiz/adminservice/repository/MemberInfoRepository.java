@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface MemberInfoRepository extends JpaRepository<MemberInfo, Long> {
 
-  @Query("select m from MemberInfo m where m.memberName like %:query%")
+  @Query("select m from MemberInfo m " +
+          "where m.memberName like %:query% " +
+          "or m.memberPhoneNumber like %:query% " +
+          "or m.memberEmail like %:query%")
   Page<MemberInfo> findAllByMemberNameLike(@Param("query") String query, Pageable pageable);
 }
