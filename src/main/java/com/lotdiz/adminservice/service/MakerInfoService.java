@@ -25,7 +25,7 @@ public class MakerInfoService {
   }
 
   public List<GetMakerSearchResponseDto> getMakerSearchResult(String query, Pageable pageable) {
-    List<MakerInfo> makerInfos = makerInfoRepository.findAllByMakerNameLike(query, pageable).getContent();
+    List<MakerInfo> makerInfos = makerInfoRepository.findAllByLike(query, pageable).getContent();
     return makerInfoMapper.makerInfosToGetMakerSearchResponseDtos(makerInfos);
   }
 }

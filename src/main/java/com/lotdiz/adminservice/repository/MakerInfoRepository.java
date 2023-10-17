@@ -13,5 +13,5 @@ public interface MakerInfoRepository extends JpaRepository<MakerInfo, Long> {
           "where m.makerName like %:query% " +
           "or m.makerPhoneNumber like %:query% " +
           "or m.makerEmail like %:query%")
-  Page<MakerInfo> findAllByMakerNameLike(@Param("query") String query, Pageable pageable);
+  Page<MakerInfo> findAllByLike(@Param("query") String query, Pageable pageable);
 }
