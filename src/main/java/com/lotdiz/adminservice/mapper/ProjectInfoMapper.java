@@ -1,7 +1,10 @@
 package com.lotdiz.adminservice.mapper;
 
 import com.lotdiz.adminservice.dto.request.CreateProjectRequestDto;
+import com.lotdiz.adminservice.dto.response.GetMemberSearchResponseDto;
 import com.lotdiz.adminservice.dto.response.GetProjectResponseDto;
+import com.lotdiz.adminservice.dto.response.GetProjectSearchResponseDto;
+import com.lotdiz.adminservice.entity.MemberInfo;
 import com.lotdiz.adminservice.entity.ProjectInfo;
 import java.util.List;
 import org.mapstruct.IterableMapping;
@@ -18,4 +21,10 @@ public interface ProjectInfoMapper {
 
   @IterableMapping(qualifiedByName = "PRD")
   List<GetProjectResponseDto> projectInfosToGetProjectResponseDtos(List<ProjectInfo> projectInfos);
+
+  @Named("PSRD")
+  GetProjectSearchResponseDto projectInfoToGetProjectSearchResponseDto(ProjectInfo projectInfo);
+
+  @IterableMapping(qualifiedByName = "PSRD")
+  List<GetProjectSearchResponseDto> projectInfosToGetProjectSearchResponseDtos(List<ProjectInfo> projectInfos);
 }

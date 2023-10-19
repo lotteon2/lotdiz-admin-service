@@ -1,7 +1,10 @@
 package com.lotdiz.adminservice.service;
 
 import com.lotdiz.adminservice.dto.request.AuthorizedProjectRequestDto;
+import com.lotdiz.adminservice.dto.response.GetMemberSearchResponseDto;
 import com.lotdiz.adminservice.dto.response.GetProjectResponseDto;
+import com.lotdiz.adminservice.dto.response.GetProjectSearchResponseDto;
+import com.lotdiz.adminservice.entity.MemberInfo;
 import com.lotdiz.adminservice.entity.ProjectInfo;
 import com.lotdiz.adminservice.exception.ProjectInfoEntityNotFoundException;
 import com.lotdiz.adminservice.mapper.ProjectInfoMapper;
@@ -25,6 +28,11 @@ public class ProjectInfoService {
   public List<GetProjectResponseDto> getProjects(Pageable pageable) {
     List<ProjectInfo> projectInfos = projectInfoRepository.findAll(pageable).getContent();
     return projectInfoMapper.projectInfosToGetProjectResponseDtos(projectInfos);
+  }
+
+  public List<GetProjectSearchResponseDto> getProjectSearchResult(String query, Pageable pageable) {
+    List<ProjectInfo> projectInfos = projectInfoRepository.findAllByLike(query, pageable).getContent();
+    return projectInfoMapper.projectInfosToGetProjectSearchResponseDtos(projectInfos);
   }
 
   @Transactional

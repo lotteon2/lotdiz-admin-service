@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface MakerInfoRepository extends JpaRepository<MakerInfo, Long> {
 
-  @Query("select m from MakerInfo m where m.makerName like %:query%")
-  Page<MakerInfo> findAllByMakerNameLike(@Param("query") String query, Pageable pageable);
+  @Query("select m from MakerInfo m " +
+          "where m.makerName like %:query% " +
+          "or m.makerPhoneNumber like %:query% " +
+          "or m.makerEmail like %:query%")
+  Page<MakerInfo> findAllByLike(@Param("query") String query, Pageable pageable);
 }
