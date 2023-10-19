@@ -1,17 +1,12 @@
 package com.lotdiz.adminservice.service;
 
 import com.lotdiz.adminservice.dto.request.AuthorizedProjectRequestDto;
-import com.lotdiz.adminservice.dto.response.GetMemberSearchResponseDto;
-import com.lotdiz.adminservice.dto.response.GetProjectResponseDto;
-import com.lotdiz.adminservice.dto.response.GetProjectSearchResponseDto;
-import com.lotdiz.adminservice.entity.MemberInfo;
 import com.lotdiz.adminservice.entity.ProjectInfo;
 import com.lotdiz.adminservice.exception.ProjectInfoEntityNotFoundException;
-import com.lotdiz.adminservice.mapper.ProjectInfoMapper;
 import com.lotdiz.adminservice.messagequeue.kafka.ProjectProducer;
 import com.lotdiz.adminservice.repository.ProjectInfoRepository;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,24 +16,23 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ProjectInfoService {
 
-  private final ProjectInfoMapper projectInfoMapper;
   private final ProjectInfoRepository projectInfoRepository;
   private final ProjectProducer projectProducer;
 
-  public List<GetProjectResponseDto> getProjects(Pageable pageable) {
-    List<ProjectInfo> projectInfos = projectInfoRepository.findAll(pageable).getContent();
-    return projectInfoMapper.projectInfosToGetProjectResponseDtos(projectInfos);
+  public Page<ProjectInfo> getProjects(Pageable pageable) {
+    return projectInfoRepository.findAll(pageable);
   }
 
-  public List<GetProjectSearchResponseDto> getProjectSearchResult(String query, Pageable pageable) {
-    List<ProjectInfo> projectInfos = projectInfoRepository.findAllByLike(query, pageable).getContent();
-    return projectInfoMapper.projectInfosToGetProjectSearchResponseDtos(projectInfos);
+  public Page<ProjectInfo> getProjectSearchResult(String query, Pageable pageable) {
+    return projectInfoRepository.findAllByLike(query, pageable);
   }
 
   @Transactional
   public void authorizeProject(AuthorizedProjectRequestDto authorizedProjectRequestDto) {
     Long projectId = authorizedProjectRequestDto.getProjectId();
-    ProjectInfo projectInfo = projectInfoRepository.findById(projectId)
+    ProjectInfo projectInfo =
+        projectInfoRepository
+            .findById(projectId)
             .orElseThrow(ProjectInfoEntityNotFoundException::new);
     projectInfo.authorize();
 
