@@ -32,7 +32,7 @@ public class MakerRestController {
   public ResponseEntity<SuccessResponse<Map<String, Object>>> getMakers(
       @PageableDefault(
               page = 0,
-              size = 20,
+              size = 10,
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {
@@ -56,7 +56,7 @@ public class MakerRestController {
       @RequestParam("query") String query,
       @PageableDefault(
               page = 0,
-              size = 20,
+              size = 10,
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {

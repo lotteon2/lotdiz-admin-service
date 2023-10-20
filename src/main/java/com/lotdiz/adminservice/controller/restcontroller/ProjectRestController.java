@@ -30,7 +30,7 @@ public class ProjectRestController {
   public ResponseEntity<SuccessResponse<Map<String, Object>>> getProjects(
       @PageableDefault(
               page = 0,
-              size = 20,
+              size = 10,
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {
@@ -54,7 +54,7 @@ public class ProjectRestController {
       @RequestParam("query") String query,
       @PageableDefault(
               page = 0,
-              size = 20,
+              size = 10,
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {

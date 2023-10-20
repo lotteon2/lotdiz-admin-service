@@ -28,7 +28,7 @@ public class MemberRestController {
   public ResponseEntity<SuccessResponse<Map<String, Object>>> getMembers(
       @PageableDefault(
               page = 0,
-              size = 20,
+              size = 10,
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {
@@ -51,7 +51,7 @@ public class MemberRestController {
       @RequestParam("query") String query,
       @PageableDefault(
               page = 0,
-              size = 20,
+              size = 10,
               sort = {"createdAt"},
               direction = Sort.Direction.DESC)
           Pageable pageable) {
