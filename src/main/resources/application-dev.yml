@@ -29,13 +29,13 @@ spring:
     # DB settings
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/admin-service?useSSL=false
+    url: jdbc:mysql://localhost:3306/admin-service
     username: root
     password: 11111111
   jpa:
-    hibernate:
-      ddl-auto: create
-    generate-ddl: true
+#    hibernate:
+#      ddl-auto: none
+#    generate-ddl: true
     properties:
       hibernate:
         format_sql: true
