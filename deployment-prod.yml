@@ -41,14 +41,14 @@ spec:
             - name: MYSQL_DATABASE
               value: admin-service
           volumeMounts:
-            - name: lotdiz-storage
+            - name: lotdiz-admin-storage
               mountPath: /var/lib/mysql
           resources:
             requests:
               memory: "2Gi"
       volumes:
-        - name: lotdiz-storage
+        - name: lotdiz-admin-storage
           persistentVolumeClaim:
-            claimName: efs-claim
+            claimName: admin-efs-claim
       restartPolicy: Always
 
