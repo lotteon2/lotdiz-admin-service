@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: admin-efs-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "admin-efs-sc"
+  resources:
+    requests:
+      storage: 5Gi
