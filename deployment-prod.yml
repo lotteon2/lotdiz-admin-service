@@ -30,7 +30,9 @@ spec:
       containers:
         - name: admin-service
           image: ${ECR_REGISTRY}/${AWS_ECR_REPOSITORY}:${IMAGE_TAG}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
         - name: mysql
           image: mysql
           env:
