@@ -34,7 +34,7 @@ spec:
           ports:
             - containerPort: 8080
         - name: mysql
-          image: mysql
+          image: mysql:8.0.34
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "11111111"
@@ -45,7 +45,7 @@ spec:
               mountPath: /var/lib/mysql
           resources:
             requests:
-              memory: "2Gi"
+              memory: "1Gi"
       volumes:
         - name: lotdiz-storage
           persistentVolumeClaim:
