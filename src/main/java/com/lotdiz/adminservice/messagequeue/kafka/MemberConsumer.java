@@ -22,7 +22,7 @@ public class MemberConsumer {
 
   @KafkaListener(topics = "create-member")
   public void receiveCreateMaker(String message, Acknowledgment ack) {
-    log.info("Get create maker msg");
+    log.info("Get create member msg");
     try {
       CreateMemberRequestDto createMemberRequestDto =
           mapper.readValue(message, CreateMemberRequestDto.class);
